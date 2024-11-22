@@ -30,7 +30,7 @@ Choreography yaklaşımında ise bir mikroservis kendi lokal işlemini tamamlad�
 	
 - Tek bir yönetim noktası olması bu noktanın arızalanması halinde tüm sürecin aksamasına yol açabilir.
 
-## 4.1- 
+## 4.1- State Machine
 
 ![saga_state_machine](https://github.com/user-attachments/assets/403e9f16-7954-4071-a7ea-c38b79cbff71)
 
