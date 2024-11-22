@@ -121,3 +121,32 @@ Fact, bir metodun parametresiz bir test metodu olduğunu işaretlemek ve bir tes
 
 ### Theory:
 Theory, bir metodun parametrelendirilmiş bir test metodu olduğunu işaretlemek için kullanılır. Test gövdesinin farklı girdi değerleri ile birden fazla kez çalışmasını sağlar. Girdi verileri, InlineData, ClassData, MemberData gibi attributelar ile verilebilir.
+
+### Fact ve Theory Kullanımının Kod Üzerinde Uygulanması
+#### Test edilecek Fonksiyon
+ ![Ekran görüntüsü 2024-11-22 111121](https://github.com/user-attachments/assets/aae78db7-e52e-4bf0-95ac-cc7dfbf12806)
+#### Fact ve Theory kullanarak Test metodlarının yazılması
+ ![Ekran görüntüsü 2024-11-22 111133](https://github.com/user-attachments/assets/f054c429-28ec-45e8-88e5-5939992c6f8f)
+#### Test Sonuçları
+![Ekran görüntüsü 2024-11-22 111328](https://github.com/user-attachments/assets/cdfeb02b-d2e6-4a02-a291-4aad3158e09e)
+
+## 3- Repository Sınıfları Üzerinde Pratik
+### 3.1- Repository sınıfları için bir CRUD yapısı kurarak testler yazın. Bu süreçte Entity Framework Core kullanarak basit bir CRUD işlemi hazırlayın.
+Bir ASP.Net Web Api projesinde Entity Framework Core kullanılarak CRUD işlemleri yapılmış, daha sonrasında hem Repository hem de Controller sınıfları için xUnit ve Moq kütüphaneleri kullanılarak unit testler gerçekleştirilmiştir.
+Projenin dosyalarına bu github repository'si üzerinden erişebilirsiniz.
+![Ekran görüntüsü 2024-11-22 120731](https://github.com/user-attachments/assets/cea6852e-a696-4b3f-9d0f-666a6fcab0f6)
+Yapılan Unit Testlerin Sonuçları
+
+### 3.2- Mapper’ı ve veritabanını mocklama işlemlerini nasıl yapacağınızı gösterin. 
+#### Mapper'ı mocklama işlemi
+![Ekran görüntüsü 2024-11-22 113711](https://github.com/user-attachments/assets/39b05877-0901-42ae-bf33-d21fd595e196)
+![Ekran görüntüsü 2024-11-22 113745](https://github.com/user-attachments/assets/c701155a-a7c7-4af5-94d5-b5ee698092ad)
+- `_mapperMock = new Mock<IMapper>();` satırı ile mapper mock'u oluşturuluyor.
+- 115. satırdaki `_mapperMock.Setup(mapper => mapper.Map<Person>(personToBeAddedDto)).Returns(personToBeAdded);` kodu ile Mocklanan Mapper nesnesinin `Map()` metodunun kendisine verilen `PersonDto` sınıfından bir nesneyi `Person` sınıfından bir nesneye map etmesini sağlıyoruz.
+#### Veritabanını mocklama işlemi
+
+![Ekran görüntüsü 2024-11-22 115016](https://github.com/user-attachments/assets/7a288b8b-e635-453f-94be-43cb5de12129)
+- `_appDbcontextMock = new Mock<AppDbContext>();` satırı ile dbcontext mock'u oluşturuluyor.
+- `_mockData` listesinde test için kullanılacak taklit veritabanı kayıtları tutuluyor ve bu liste GetMock metoduna parametre olarak geçiliyor.
+- GetMock metodunda `var mockDbSet = new Mock<DbSet<Person>>();` satırı ile dbset mock'u oluşturuluyor ve bu dbset'e _mockData içindeki kayıtlar geçiliyor.
+- `_appDbcontextMock.Setup(x => x.Set<Person>()).Returns(mockDbSet.Object);` satırı ile mocklanan dbcontext'in `Set<Person>()` metodunun dbset Mock'unu döndürmesi sağlanıyor.
