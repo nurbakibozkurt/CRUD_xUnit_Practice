@@ -129,6 +129,7 @@ Theory, bir metodun parametrelendirilmiş bir test metodu olduğunu işaretlemek
  ![Ekran görüntüsü 2024-11-22 111133](https://github.com/user-attachments/assets/f054c429-28ec-45e8-88e5-5939992c6f8f)
 #### Test Sonuçları
 ![Ekran görüntüsü 2024-11-22 111328](https://github.com/user-attachments/assets/cdfeb02b-d2e6-4a02-a291-4aad3158e09e)
+Kaynak kodlarına https://github.com/nurbakibozkurt/FactAndTheoryPractice adresinden erişebilirsiniz.
 
 ## 3- Repository Sınıfları Üzerinde Pratik
 ### 3.1- Repository sınıfları için bir CRUD yapısı kurarak testler yazın. Bu süreçte Entity Framework Core kullanarak basit bir CRUD işlemi hazırlayın.
